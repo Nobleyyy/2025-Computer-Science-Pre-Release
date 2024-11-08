@@ -209,9 +209,15 @@ def CheckIfUserInputValid(UserInput):
         return False
 
 def GetTarget(MaxTarget):
+    """
+    MaxTarget : Upper inclusive bound for random number
+    """
     return random.randint(1, MaxTarget)
     
 def GetNumber(MaxNumber):
+    """
+    MaxNumber : Upper inclusive bound for random number
+    """
     return random.randint(1, MaxNumber)   
 
 # Create list of numbers for user to reach 
