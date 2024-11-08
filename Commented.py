@@ -110,6 +110,7 @@ def DisplayState(Targets, NumbersAllowed, Score):
     DisplayNumbersAllowed(NumbersAllowed)
     DisplayScore(Score)    
 
+# Outputs the user's current score
 def DisplayScore(Score):
     print("Current score: " + str(Score))
     print()
