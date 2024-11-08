@@ -41,9 +41,9 @@ def PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber):
     GameOver = False    
     while not GameOver:    # Start of game
         DisplayState(Targets, NumbersAllowed, Score)
-        UserInput = input("Enter an expression: ")
-        print()
-        if CheckIfUserInputValid(UserInput):
+        UserInput = input("Enter an expression: ")    # Input user's maths expression
+        print()                                        # New line
+        if CheckIfUserInputValid(UserInput):        # Check if characters input are allowed
             UserInputInRPN = ConvertToRPN(UserInput)
             if CheckNumbersUsedAreAllInNumbersAllowed(NumbersAllowed, UserInputInRPN, MaxNumber):
                 IsTarget, Score = CheckIfUserInputEvaluationIsATarget(Targets, UserInputInRPN, Score)
@@ -205,6 +205,8 @@ def GetNumberFromUserInput(UserInput, Position):
 
 def CheckIfUserInputValid(UserInput):
     if re.search("^([0-9]+[\\+\\-\\*\\/])+[0-9]+$", UserInput) is not None:
+        # ^ Start of expression
+        # $ End of expression
         return True
     else:
         return False
