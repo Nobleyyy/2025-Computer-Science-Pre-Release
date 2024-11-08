@@ -114,15 +114,15 @@ def DisplayState(Targets, NumbersAllowed, Score):
 # Outputs the user's current score
 def DisplayScore(Score):
     print("Current score: " + str(Score))
-    print()
-    print()
+    print()        # Blank line
+    print()        # Blank line
     
 def DisplayNumbersAllowed(NumbersAllowed):
     print("Numbers available: ", end = '')
     for N in NumbersAllowed:
         print(str(N) + "  ", end = '')
-    print()
-    print()
+    print()        # Blank line
+    print()        # Blank line
     
 def DisplayTargets(Targets):
     print("|", end = '')
