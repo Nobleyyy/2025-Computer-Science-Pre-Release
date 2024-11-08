@@ -234,11 +234,11 @@ def CreateTargets(SizeOfTargets, MaxTarget):
     return Targets
     
 def FillNumbers(NumbersAllowed, TrainingGame, MaxNumber):
-    if TrainingGame:
+    if TrainingGame:    # Training game
         return [2, 3, 2, 8, 512]
-    else:
-        while len(NumbersAllowed) < 5:
-            NumbersAllowed.append(GetNumber(MaxNumber))      
+    else:                # Normal Game
+        while len(NumbersAllowed) < 5:    # Check if there are less than 5 elements in NumbersAllowed
+            NumbersAllowed.append(GetNumber(MaxNumber))    # Insert into the list a random number  
         return NumbersAllowed
 
 if __name__ == "__main__":
