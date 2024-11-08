@@ -206,6 +206,10 @@ def GetNumberFromUserInput(UserInput, Position):
 def CheckIfUserInputValid(UserInput):
     if re.search("^([0-9]+[\\+\\-\\*\\/])+[0-9]+$", UserInput) is not None:
         # ^ Start of expression
+        # [] A set of characters
+        # 0-9 All digits from 0 to 9
+        # + One or more Occurrences
+        # \\+\\-\\*\\/ Characters plus or minus or asterisk or slash
         # $ End of expression
         return True
     else:
