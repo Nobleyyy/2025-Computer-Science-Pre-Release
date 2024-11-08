@@ -14,14 +14,14 @@ import math
 
 # Main Game function
 def Main():
-    NumbersAllowed = []
+    NumbersAllowed = []    # Used as the list of nubmers given to make larger numbers.
     Targets = []
     MaxNumberOfTargets = 20
     MaxTarget = 0
-    MaxNumber = 0
+    MaxNumber = 0        # Highest number a user can create
     TrainingGame = False
-    Choice = input("Enter y to play the training game, anything else to play a random game: ").lower()
-    print()
+    Choice = input("Enter y to play the training game, anything else to play a random game: ").lower()    # Option to play training or not
+    print()            # New line
     if Choice == "y":
         MaxNumber = 1000
         MaxTarget = 1000
