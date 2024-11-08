@@ -33,7 +33,7 @@ def Main():
         Targets = CreateTargets(MaxNumberOfTargets, MaxTarget)    # Create list of numbers for user to reach    
     NumbersAllowed = FillNumbers(NumbersAllowed, TrainingGame, MaxNumber)
     PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber)
-    input()
+    input()    # Keeps console window open
     
 def PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber):
     Score = 0
