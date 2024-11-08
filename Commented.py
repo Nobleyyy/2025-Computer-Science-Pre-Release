@@ -34,11 +34,12 @@ def Main():
     NumbersAllowed = FillNumbers(NumbersAllowed, TrainingGame, MaxNumber)
     PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber)
     input()    # Keeps console window open
-    
+
+# Main control of the game
 def PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber):
-    Score = 0
-    GameOver = False
-    while not GameOver:
+    Score = 0    # Starting score
+    GameOver = False    
+    while not GameOver:    # Start of game
         DisplayState(Targets, NumbersAllowed, Score)
         UserInput = input("Enter an expression: ")
         print()
@@ -49,7 +50,7 @@ def PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber):
                 if IsTarget:
                     NumbersAllowed = RemoveNumbersUsed(UserInput, MaxNumber, NumbersAllowed)
                     NumbersAllowed = FillNumbers(NumbersAllowed, TrainingGame, MaxNumber)
-        Score -= 1
+        Score -= 1    # Score decremented by 1
         if Targets[0] != -1:
             GameOver = True
         else:
