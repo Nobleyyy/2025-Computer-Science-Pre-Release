@@ -22,15 +22,15 @@ def Main():
     TrainingGame = False
     Choice = input("Enter y to play the training game, anything else to play a random game: ").lower()    # Option to play training or not
     print()            # New line
-    if Choice == "y":
+    if Choice == "y":    # Training game
         MaxNumber = 1000
         MaxTarget = 1000
         TrainingGame = True
         Targets = [-1, -1, -1, -1, -1, 23, 9, 140, 82, 121, 34, 45, 68, 75, 34, 23, 119, 43, 23, 119]
-    else:
+    else:        # Normal game
         MaxNumber = 10
         MaxTarget = 50
-        Targets = CreateTargets(MaxNumberOfTargets, MaxTarget)        
+        Targets = CreateTargets(MaxNumberOfTargets, MaxTarget)    # Create list of numbers for user to reach    
     NumbersAllowed = FillNumbers(NumbersAllowed, TrainingGame, MaxNumber)
     PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber)
     input()
@@ -214,10 +214,11 @@ def GetTarget(MaxTarget):
 def GetNumber(MaxNumber):
     return random.randint(1, MaxNumber)   
 
+# Create list of numbers for user to reach 
 def CreateTargets(SizeOfTargets, MaxTarget):
-    Targets = []
-    for Count in range(1, 6):
-        Targets.append(-1)
+    Targets = []        # Create empty local list
+    for Count in range(1, 6):    # Loop 5 times
+        Targets.append(-1)        # Append denary "-1" to the list
     for Count in range(1, SizeOfTargets - 4):
         Targets.append(GetTarget(MaxTarget))
     return Targets
