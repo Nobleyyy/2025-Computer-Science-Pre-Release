@@ -216,10 +216,14 @@ def GetNumber(MaxNumber):
 
 # Create list of numbers for user to reach 
 def CreateTargets(SizeOfTargets, MaxTarget):
+    """
+    SizeOfTargets : Number of targets
+    MaxTarget : Highest value for a target
+    """
     Targets = []        # Create empty local list
     for Count in range(1, 6):    # Loop 5 times
         Targets.append(-1)        # Append denary "-1" to the list
-    for Count in range(1, SizeOfTargets - 4):
+    for Count in range(1, SizeOfTargets - 4):    # SizeOfTargets 
         Targets.append(GetTarget(MaxTarget))
     return Targets
     
