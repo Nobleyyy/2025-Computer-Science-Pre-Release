@@ -7,10 +7,12 @@
 #written by the AQA Programmer Team
 #developed in the Python 3.9 programming environment
 
+# Imports
 import re
 import random
 import math
 
+# Main Game function
 def Main():
     NumbersAllowed = []
     Targets = []
