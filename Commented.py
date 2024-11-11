@@ -207,7 +207,7 @@ def CheckIfUserInputValid(UserInput):
     if re.search("^([0-9]+[\\+\\-\\*\\/])+[0-9]+$", UserInput) is not None:
         # ^ Start of expression
         # [] A set of characters
-        # 0-9 All digits from 0 to 9
+        # 0-9 All digits
         # + One or more Occurrences
         # \\+\\-\\*\\/ plus or minus or asterisk or slash            \\+\\ exclude special function to just use as a character
         # $ End of expression
