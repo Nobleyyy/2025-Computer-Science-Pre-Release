@@ -211,9 +211,9 @@ def CheckIfUserInputValid(UserInput):
         # + One or more Occurrences
         # \\+\\-\\*\\/ plus or minus or asterisk or slash            \\+\\ exclude special function to just use as a character
         # $ End of expression
-        return True
+        return True    # Input valid
     else:
-        return False
+        return False    # Input not valid
 
 def GetTarget(MaxTarget):
     """
