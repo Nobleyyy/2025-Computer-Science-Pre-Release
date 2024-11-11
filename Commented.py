@@ -135,7 +135,7 @@ def DisplayTargets(Targets):
     print()
     print()
 
-def ConvertToRPN(UserInput):
+def ConvertToRPN(UserInput): # Convert to Reverse Polish
     Position = 0
     Precedence = {"+": 2, "-": 2, "*": 4, "/": 4}
     Operators = []
