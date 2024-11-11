@@ -209,7 +209,7 @@ def CheckIfUserInputValid(UserInput):
         # [] A set of characters
         # 0-9 All digits from 0 to 9
         # + One or more Occurrences
-        # \\+\\-\\*\\/ Characters plus or minus or asterisk or slash
+        # \\+\\-\\*\\/ plus or minus or asterisk or slash
         # $ End of expression
         return True
     else:
