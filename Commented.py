@@ -149,6 +149,7 @@ def ConvertToRPN(UserInput): # Convert to Reverse Polish
         if Position < len(UserInput):
             CurrentOperator = UserInput[Position - 1] # Set the current operator to the inputted user  
             while len(Operators) > 0 and Precedence[Operators[-1]] > Precedence[CurrentOperator]: # Sorts out operator precedence
+                # for example, if expression was "2+2/2", then: Operand = 2, Position = 2 --> UserInputInRPN = ['2'], Operators = ['+'] --> Operand = 2, Position = 4 --> UserInputInRPN = ['2','2'], CurrentOperator = '/' --> Operators = ['+', '/'] --> Operand = 2, Position = 5 --> UserInputInRPN = ['2','2','2'] --> Goes into bottom else statement, userInputInRPN = ['2','2','2','/'], Operators = ['+'] --> Still in Else statement, UserInputInRPN = ['2','2','2','/','+'], Operators = [] --> RETURNS UserInputInRPN since Operators is empty, and the postion(pointer) is at the end of the UserInputExpression 
                 UserInputInRPN.append(Operators[-1])
                 Operators.pop() # Remove the final operator on the operator list        
             if len(Operators) > 0 and Precedence[Operators[-1]] == Precedence[CurrentOperator]:
