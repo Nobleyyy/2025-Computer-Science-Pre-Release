@@ -18,7 +18,7 @@ def Main():
     Targets = []
     MaxNumberOfTargets = 20
     MaxTarget = 0
-    MaxNumber = 0        # Highest number a user can create
+    MaxNumber = 0        # Highest number a user can input
     TrainingGame = False
     Choice = input("Enter y to play the training game, anything else to play a random game: ").lower()    # Option to play training or not
     print()            # New line
@@ -89,12 +89,12 @@ def UpdateTargets(Targets, TrainingGame, MaxTarget):
 
 def CheckNumbersUsedAreAllInNumbersAllowed(NumbersAllowed, UserInputInRPN, MaxNumber):
     Temp = []
-    for Item in NumbersAllowed:
+    for Item in NumbersAllowed: Make a copy of the inputted NumbersAllowed list
         Temp.append(Item)
     for Item in UserInputInRPN:
-        if CheckValidNumber(Item, MaxNumber):
-            if int(Item) in Temp:
-                Temp.remove(int(Item))
+        if CheckValidNumber(Item, MaxNumber): # Does not have an else statement to which returns False if a number is >MaxNumber
+            if int(Item) in Temp: # Remove the item from the temp list after being used so it cannot be used again
+                Temp.remove(int(Item)) # Remove the item from the list
             else:
                 return False            
     return True
@@ -132,8 +132,8 @@ def DisplayTargets(Targets):
         else:
             print(T, end = '')           
         print("|", end = '')
-    print()
-    print()
+    print()        # Blank line
+    print()        # Blank line
 
 def ConvertToRPN(UserInput): # Convert to Reverse Polish
     Position = 0
