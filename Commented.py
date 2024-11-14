@@ -100,11 +100,11 @@ def CheckNumbersUsedAreAllInNumbersAllowed(NumbersAllowed, UserInputInRPN, MaxNu
     return True
 
 def CheckValidNumber(Item, MaxNumber):
-    if re.search("^[0-9]+$", Item) is not None:
-        ItemAsInteger = int(Item)
-        if ItemAsInteger > 0 and ItemAsInteger <= MaxNumber:
-            return True            
-    return False
+    if re.search("^[0-9]+$", Item) is not None: # Number must only contain any digit 0 or higher in any combination at least once
+        ItemAsInteger = int(Item) # Cast inputted number to an integer
+        if ItemAsInteger > 0 and ItemAsInteger <= MaxNumber: # If Check if the number inputted is below the max number
+            return True # Number valid
+    return False # Number invalid
     
 def DisplayState(Targets, NumbersAllowed, Score):
     DisplayTargets(Targets)
