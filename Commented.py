@@ -162,15 +162,15 @@ def ConvertToRPN(UserInput): # Convert to Reverse Polish
     return UserInputInRPN
 
 def EvaluateRPN(UserInputInRPN):
-    S = []
-    while len(UserInputInRPN) > 0:
-        while UserInputInRPN[0] not in ["+", "-", "*", "/"]:
+    S = [] # Temp proxy stack
+    while len(UserInputInRPN) > 0: # While the UserInputInRPN is not empty
+        while UserInputInRPN[0] not in ["+", "-", "*", "/"]: # While the first element is not an operator
             S.append(UserInputInRPN[0])
             UserInputInRPN.pop(0)        
-        Num2 = float(S[-1])
-        S.pop()
-        Num1 = float(S[-1])
-        S.pop()
+        Num2 = float(S[-1]) # Set Num2 to the last element in the S list
+        S.pop() # Remove the last element in the S list
+        Num1 = float(S[-1]) # Set Num1 to the last element in the S list
+        S.pop() # Remove the last element in the S list
         Result = 0.0
         if UserInputInRPN[0] == "+":
             Result = Num1 + Num2
@@ -182,8 +182,8 @@ def EvaluateRPN(UserInputInRPN):
             Result = Num1 / Num2
         UserInputInRPN.pop(0)
         S.append(str(Result))       
-    if float(S[0]) - math.floor(float(S[0])) == 0.0:
-        return math.floor(float(S[0]))
+    if float(S[0]) - math.floor(float(S[0])) == 0.0: # Check if it is an integer
+        return math.floor(float(S[0])) # Floor rounds down to the nearest integer
     else:
         return -1
 
