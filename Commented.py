@@ -137,23 +137,23 @@ def DisplayTargets(Targets):
 
 def ConvertToRPN(UserInput): # Convert to Reverse Polish
     Position = 0
-    Precedence = {"+": 2, "-": 2, "*": 4, "/": 4}
+    Precedence = {"+": 2, "-": 2, "*": 4, "/": 4}    # Operator precedence dictionary BIDMAS
     Operators = []
     Operand, Position = GetNumberFromUserInput(UserInput, Position)
     UserInputInRPN = []
     UserInputInRPN.append(str(Operand))
     Operators.append(UserInput[Position - 1])
-    while Position < len(UserInput):
-        Operand, Position = GetNumberFromUserInput(UserInput, Position)
+    while Position < len(UserInput): # Go through each postion
+        Operand, Position = GetNumberFromUserInput(UserInput, Position) # Get inputted data from user
         UserInputInRPN.append(str(Operand))
         if Position < len(UserInput):
-            CurrentOperator = UserInput[Position - 1]
-            while len(Operators) > 0 and Precedence[Operators[-1]] > Precedence[CurrentOperator]:
+            CurrentOperator = UserInput[Position - 1] # Set the current operator to the inputted user  
+            while len(Operators) > 0 and Precedence[Operators[-1]] > Precedence[CurrentOperator]: # Sorts out operator precedence
                 UserInputInRPN.append(Operators[-1])
-                Operators.pop()                
+                Operators.pop() # Remove the final operator on the operator list        
             if len(Operators) > 0 and Precedence[Operators[-1]] == Precedence[CurrentOperator]:
                 UserInputInRPN.append(Operators[-1])
-                Operators.pop()    
+                Operators.pop() # Remove the final operator on the operator list  
             Operators.append(CurrentOperator)
         else:
             while len(Operators) > 0:
