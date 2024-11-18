@@ -220,7 +220,7 @@ def GetTarget(MaxTarget):
     """
     MaxTarget : Upper inclusive bound for random number
     """
-    return random.randint(1, MaxTarget)
+    return random.randint(1, MaxTarget) # Random number x         1<= x <=MaxTarget
     
 def GetNumber(MaxNumber):
     """
