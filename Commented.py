@@ -59,14 +59,14 @@ def PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber):
     DisplayScore(Score)
 
 def CheckIfUserInputEvaluationIsATarget(Targets, UserInputInRPN, Score):
-    UserInputEvaluation = EvaluateRPN(UserInputInRPN)
+    UserInputEvaluation = EvaluateRPN(UserInputInRPN) # Calculate RPN expression
     UserInputEvaluationIsATarget = False
-    if UserInputEvaluation != -1:
-        for Count in range(0, len(Targets)):
-            if Targets[Count] == UserInputEvaluation:
-                Score += 2
-                Targets[Count] = -1
-                UserInputEvaluationIsATarget = True        
+    if UserInputEvaluation != -1: # If Evaluate RPN is not able to produce a valid integer
+        for Count in range(0, len(Targets)): # Linear search
+            if Targets[Count] == UserInputEvaluation: # If target is found
+                Score += 2 # Increment score by 2
+                Targets[Count] = -1 # Replace the target found with -1
+                UserInputEvaluationIsATarget = True # A target has been hit
     return UserInputEvaluationIsATarget, Score
     
 def RemoveNumbersUsed(UserInput, MaxNumber, NumbersAllowed):
