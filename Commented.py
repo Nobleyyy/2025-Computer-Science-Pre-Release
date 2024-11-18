@@ -51,10 +51,10 @@ def PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber):
                     NumbersAllowed = RemoveNumbersUsed(UserInput, MaxNumber, NumbersAllowed) # Remove used numbers from list of available
                     NumbersAllowed = FillNumbers(NumbersAllowed, TrainingGame, MaxNumber) # Add new number(s) to list of available
         Score -= 1    # Score decremented by 1
-        if Targets[0] != -1: # If there are less than 0 targets
+        if Targets[0] != -1: # If there is no target in the first item of the targets list
             GameOver = True # Game Over
         else:
-            Targets = UpdateTargets(Targets, TrainingGame, MaxTarget)        
+            Targets = UpdateTargets(Targets, TrainingGame, MaxTarget) # Fill targets   
     print("Game over!")
     DisplayScore(Score)
 
@@ -79,12 +79,12 @@ def RemoveNumbersUsed(UserInput, MaxNumber, NumbersAllowed):
 
 def UpdateTargets(Targets, TrainingGame, MaxTarget):
     for Count in range (0, len(Targets) - 1):
-        Targets[Count] = Targets[Count + 1]
+        Targets[Count] = Targets[Count + 1] # Shift target values left one position in the target list
     Targets.pop()
-    if TrainingGame:
-        Targets.append(Targets[-1])
-    else:
-        Targets.append(GetTarget(MaxTarget))
+    if TrainingGame: # Training Game
+        Targets.append(Targets[-1]) # Append the final item in the target list
+    else: # Normal Game
+        Targets.append(GetTarget(MaxTarget)) # Append a random target
     return Targets
 
 def CheckNumbersUsedAreAllInNumbersAllowed(NumbersAllowed, UserInputInRPN, MaxNumber):
@@ -189,10 +189,10 @@ def EvaluateRPN(UserInputInRPN):
         return -1
 
 def GetNumberFromUserInput(UserInput, Position):
-    Number = ""
-    MoreDigits = True
+    Number = "" # Temp variable
+    MoreDigits = True # Temp variable
     while MoreDigits:
-        if not(re.search("[0-9]", str(UserInput[Position])) is None):
+        if not(re.search("[0-9]", str(UserInput[Position])) is None): # Number contrains digits 0-9
             Number += UserInput[Position]
         else:
             MoreDigits = False            
@@ -226,7 +226,7 @@ def GetNumber(MaxNumber):
     """
     MaxNumber : Upper inclusive bound for random number
     """
-    return random.randint(1, MaxNumber)   
+    return random.randint(1, MaxNumber) # Random number y         1<= y <=MaxNumber
 
 # Create list of numbers for user to reach 
 def CreateTargets(SizeOfTargets, MaxTarget):
