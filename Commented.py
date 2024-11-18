@@ -80,7 +80,7 @@ def RemoveNumbersUsed(UserInput, MaxNumber, NumbersAllowed):
 def UpdateTargets(Targets, TrainingGame, MaxTarget):
     for Count in range (0, len(Targets) - 1):
         Targets[Count] = Targets[Count + 1] # Shift target values left one position in the target list
-    Targets.pop()
+    Targets.pop() # Remove final item in the Target list
     if TrainingGame: # Training Game
         Targets.append(Targets[-1]) # Append the final item in the target list
     else: # Normal Game
@@ -192,8 +192,8 @@ def GetNumberFromUserInput(UserInput, Position):
     Number = "" # Temp variable
     MoreDigits = True # Temp variable
     while MoreDigits:
-        if not(re.search("[0-9]", str(UserInput[Position])) is None): # Number contrains digits 0-9
-            Number += UserInput[Position]
+        if not(re.search("[0-9]", str(UserInput[Position])) is None):
+            Number += UserInput[Position] Add the user input to the Number
         else:
             MoreDigits = False            
         Position += 1
