@@ -47,12 +47,12 @@ def PlayGame(Targets, NumbersAllowed, TrainingGame, MaxTarget, MaxNumber):
             UserInputInRPN = ConvertToRPN(UserInput)
             if CheckNumbersUsedAreAllInNumbersAllowed(NumbersAllowed, UserInputInRPN, MaxNumber):
                 IsTarget, Score = CheckIfUserInputEvaluationIsATarget(Targets, UserInputInRPN, Score)
-                if IsTarget:
-                    NumbersAllowed = RemoveNumbersUsed(UserInput, MaxNumber, NumbersAllowed)
-                    NumbersAllowed = FillNumbers(NumbersAllowed, TrainingGame, MaxNumber)
+                if IsTarget: # Target has been hit
+                    NumbersAllowed = RemoveNumbersUsed(UserInput, MaxNumber, NumbersAllowed) # Remove used numbers from list of available
+                    NumbersAllowed = FillNumbers(NumbersAllowed, TrainingGame, MaxNumber) # Add new number(s) to list of available
         Score -= 1    # Score decremented by 1
-        if Targets[0] != -1:
-            GameOver = True
+        if Targets[0] != -1: # If there are less than 0 targets
+            GameOver = True # Game Over
         else:
             Targets = UpdateTargets(Targets, TrainingGame, MaxTarget)        
     print("Game over!")
@@ -70,12 +70,12 @@ def CheckIfUserInputEvaluationIsATarget(Targets, UserInputInRPN, Score):
     return UserInputEvaluationIsATarget, Score
     
 def RemoveNumbersUsed(UserInput, MaxNumber, NumbersAllowed):
-    UserInputInRPN = ConvertToRPN(UserInput)
-    for Item in UserInputInRPN:
-        if CheckValidNumber(Item, MaxNumber):
-            if int(Item) in NumbersAllowed:
-                NumbersAllowed.remove(int(Item))
-    return NumbersAllowed
+    UserInputInRPN = ConvertToRPN(UserInput) # RPN expression
+    for Item in UserInputInRPN: # Linear Search
+        if CheckValidNumber(Item, MaxNumber): # If valid number below max
+            if int(Item) in NumbersAllowed: # If numbers in RPN list are in Numbers Allowed
+                NumbersAllowed.remove(int(Item)) # Number removed from the list of available
+    return NumbersAllowed # List of available numbers returned
 
 def UpdateTargets(Targets, TrainingGame, MaxTarget):
     for Count in range (0, len(Targets) - 1):
